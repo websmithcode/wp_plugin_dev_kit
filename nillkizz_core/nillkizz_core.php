@@ -17,7 +17,6 @@ if (!defined('ABSPATH')) {
 
 
 if (!class_exists('Core')) :
-
   require_once('plugin_base.php');
 
   class Core extends PluginBase

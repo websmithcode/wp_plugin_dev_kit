@@ -7,6 +7,9 @@ class PluginBase
   public $includes = [
     // Modules
   ];
+  protected $_css_styles = [
+    'quasar@2.6.0' => ['name' => 'quasar', 'url' => '//cdn.jsdelivr.net/npm/quasar@2.6.0/dist/quasar.prod.css'],
+  ];
   protected $_js_scripts = [
     'alpinejs' =>             ['name' => 'alpinejs',            'url' => '//unpkg.com/alpinejs@3.x.x/dist/cdn.min.js', 'in_footer' => true],
     'alpinejs/collapse' =>    ['name' => 'alpinejs/collapse',   'url' => '//unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js'],
@@ -56,10 +59,15 @@ class PluginBase
 
   function enqueue_style($style)
   {
+    if (is_string($style)) $style = $this->_css_styles[$style];
+
     $gv = [$this, '_get_val'];
-    add_action($this->plugin_name . '_enq_styles', function () use ($gv, $style) {
-      wp_enqueue_style('nillkizz-' . $this->plugin_name . '-' . $style['name'], $this->plugin_url . $style['path'], [], $gv($style, 'version', $this->plugin_version));
-    });
+    $handle = $style['name'];
+    $src = $gv($style, 'url') ?: $this->plugin_url . $gv($style, 'path');
+    $deps = $gv($style, 'deps', []);
+    $ver = $gv($style, 'ver', $this->plugin_version);
+    $media = $gv($style, 'media', 'all');
+    wp_enqueue_style($handle, $src, $deps, $ver, $media);
   }
 
 
@@ -101,6 +109,12 @@ class PluginBase
       $this->enqueue_style($style);
     }
     do_action($this->plugin_name . '_enq_styles');
+
+    add_action('wp_footer', function () {
+      foreach (apply_filters($this->plugin_name . '_footer_enq_styles', $this->css_styles) as $style) {
+        $this->enqueue_style($style);
+      }
+    });
   }
 
   function _enqueue_scripts()
