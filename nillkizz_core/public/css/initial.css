@@ -1,4 +1,5 @@
-[x-cloak] {
+[x-cloak],
+[v-cloak] {
   opacity: 0;
 }
 
