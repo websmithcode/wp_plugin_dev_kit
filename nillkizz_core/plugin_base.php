@@ -8,12 +8,14 @@ class PluginBase
     // Modules
   ];
   protected $_js_scripts = [
-    'alpinejs' => ['name' => 'alpinejs', 'url' => '//unpkg.com/alpinejs@3.x.x/dist/cdn.min.js', 'in_footer' => true],
-    'alpinejs/collapse' => ['name' => 'alpinejs/collapse', 'url' => '//unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js'],
-    'alpinejs/focus' => ['name' => 'alpinejs/focus', 'url' => '//unpkg.com/@alpinejs/focus@3.9.1/dist/cdn.min.js'],
-    'alpinejs/intersect' => ['name' => 'alpinejs/intersect', 'url' => '//unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js'],
-    'alpinejs/persist' => ['name' => 'alpinejs/persist', 'url' => '//unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js'],
-    'alpinejs/morph' => ['name' => 'alpinejs/morph', 'url' => '//unpkg.com/@alpinejs/morph@3.x.x/dist/cdn.min.js'],
+    'alpinejs' =>             ['name' => 'alpinejs',            'url' => '//unpkg.com/alpinejs@3.x.x/dist/cdn.min.js', 'in_footer' => true],
+    'alpinejs/collapse' =>    ['name' => 'alpinejs/collapse',   'url' => '//unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js'],
+    'alpinejs/focus' =>       ['name' => 'alpinejs/focus',      'url' => '//unpkg.com/@alpinejs/focus@3.9.1/dist/cdn.min.js'],
+    'alpinejs/intersect' =>   ['name' => 'alpinejs/intersect',  'url' => '//unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js'],
+    'alpinejs/persist' =>     ['name' => 'alpinejs/persist',    'url' => '//unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js'],
+    'alpinejs/morph' =>       ['name' => 'alpinejs/morph',      'url' => '//unpkg.com/@alpinejs/morph@3.x.x/dist/cdn.min.js'],
+    'vue@3' =>                ['name' => 'vuejs',               'url' => '//cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js', 'in_footer' => true],
+    'quasar@2.6.0' =>         ['name' => 'quasar-umd',          'url' => '//cdn.jsdelivr.net/npm/quasar@2.6.0/dist/quasar.umd.prod.js', 'in_footer' => true],
   ];
 
   public $js_scripts = [
