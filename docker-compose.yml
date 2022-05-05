@@ -30,9 +30,9 @@ services:
       - type: bind
         source: ${PWD}/config/php/uploads.ini
         target: /usr/local/etc/php/conf.d/uploads.ini
-      - ./wp-app/:/var/www/html/ # Full wordpress project
-      - ./Plugin-Name/:/var/www/html/wp-content/plugins/Plugin-Name # Plugin development
-      - ./nillkizz_core/:/var/www/html/wp-content/plugins/nillkizz_core # Plugin development
+      # - ./wp-app/:/var/www/html/ # Full wordpress project
+      - ./plugin-name/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
+      - ./nillkizz-core/:/var/www/html/wp-content/plugins/nillkizz-core # Plugin development
       #- ./theme-name/:/var/www/html/wp-content/themes/theme-name     # Theme development
 
       # wpcli:
