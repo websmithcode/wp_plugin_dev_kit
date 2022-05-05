@@ -10,7 +10,8 @@ abstract class PluginBase
     // Your includes relative path...
   ];
   public $shortcodes = [
-    // Yout shortcode files path relative for "shortcodes/"...
+    // Yout shortcode files path relative for "shortcodes/"... (without ".php" extension)
+    // Like wp plugins - must be a directory with filename with same name, or just php file
   ];
   protected $_css_styles = [
     'quasar@2.6.0' => ['name' => 'quasar', 'url' => '//cdn.jsdelivr.net/npm/quasar@2.6.0/dist/quasar.prod.css'],

@@ -33,7 +33,9 @@ if (!class_exists('PluginName')) :
         // Your includes relative path...
       ];
       public $shortcodes = [
-        // Yout shortcode files path relative for "shortcodes/"...
+        // 'example', 'example2' // Uncomment for test
+        // Yout shortcode files path relative for "shortcodes/"... (without ".php" extension)
+        // Like wp plugins - must be a directory with filename with same name, or just php file
       ];
       public $js_scripts = [
         ['name' => 'plugin_name-main', 'path' => 'public/js/main.js'],

@@ -7,7 +7,7 @@ class Shortcodes
   function __construct($dir = "", $shortcodes = [])
   {
     $this->dir = $dir; // Dir with your plugin shortcode files
-    $this->shortcodes = $shortcodes; //  your shortcode files... (Shortcode - without ".php" extension, slashes replaces by "__")
+    $this->shortcodes = $shortcodes; //  your shortcode names (without ".php" extension)
   }
 
   function init()
@@ -18,21 +18,18 @@ class Shortcodes
   function add_shortcodes()
   {
     foreach ($this->shortcodes as $shortcode) {
-      $shortcode_name = self::get_shortcode_name($shortcode);
-
-      add_shortcode($shortcode_name, $this->init_shortcode($shortcode));
+      add_shortcode($shortcode, $this->init_shortcode($shortcode));
     }
   }
 
-  function init_shortcode($shortcode_file)
+  function init_shortcode($shortcode)
   {
-    return (function () use ($shortcode_file) {
-      include $this->dir . $shortcode_file;
-    });
-  }
+    $dir = $this->dir . $shortcode;
+    if (is_dir($dir)) $path =  $dir . '/' . $shortcode . '.php';
+    else $path = $dir . '.php';
 
-  static function get_shortcode_name($shortcode_file)
-  {
-    return str_replace('/', '__', rtrim($shortcode_file, '.php'));
+    return (function () use ($path) {
+      include $path;
+    });
   }
 }
