@@ -30,6 +30,10 @@ if (!class_exists('PluginName')) :
     {
       public $includes = [
         // 'rest_api.php', // Uncomment, if rest needs
+        // Your includes relative path...
+      ];
+      public $shortcodes = [
+        // Yout shortcode files path relative for "shortcodes/"...
       ];
       public $js_scripts = [
         ['name' => 'plugin_name-main', 'path' => 'public/js/main.js'],

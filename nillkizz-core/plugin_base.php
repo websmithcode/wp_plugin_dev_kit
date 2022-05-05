@@ -7,7 +7,10 @@ abstract class PluginBase
   const AUTHOR = 'NILLKIZZ';
 
   public $includes = [
-    // Modules
+    // Your includes relative path...
+  ];
+  public $shortcodes = [
+    // Yout shortcode files path relative for "shortcodes/"...
   ];
   protected $_css_styles = [
     'quasar@2.6.0' => ['name' => 'quasar', 'url' => '//cdn.jsdelivr.net/npm/quasar@2.6.0/dist/quasar.prod.css'],
@@ -35,6 +38,7 @@ abstract class PluginBase
     if (empty($__FILE__)) wp_die('$__FILE__ variable of constructor in class extended with NillkizzPluginBase class - must be defined!');
     if (!function_exists('get_plugin_data')) require_once(ABSPATH . 'wp-admin/includes/plugin.php');
     $this->__FILE__ = $__FILE__;
+    $this->__DIR__ = dirname($__FILE__);
     $this->plugin_name = dirname(plugin_basename($__FILE__));
     $this->plugin = plugin_basename($__FILE__);
     $this->plugin_path = trailingslashit(plugin_dir_path($__FILE__));
@@ -57,6 +61,9 @@ abstract class PluginBase
     add_action('wp_enqueue_scripts', [$this, '_enqueue_scripts']);
 
     $this->_include();
+
+    $shortcodes = new Shortcodes($this->__DIR__ . '/shortcodes/', $this->shortcodes);
+    $shortcodes->init();
   }
 
   function enqueue_style($style)
