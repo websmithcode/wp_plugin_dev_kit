@@ -1,3 +1,3 @@
 <?php
 
-echo "Example2 as simple file)"
+echo "Example2 as simple file)";

@@ -29,6 +29,7 @@ class Shortcodes
     else $path = $dir . '.php';
 
     return (function () use ($path) {
+      $public_path = '/shortcodes/' . basename(dirname($path)) . '/public/';
       include $path;
     });
   }
