@@ -59,10 +59,3 @@ if (!class_exists('Core')) :
 // Instantiate.
 
 endif;
-
-register_activation_hook(__FILE__, function () { // TODO: remove useless options
-  add_option('nillkizz_core_activated', true);
-});
-register_deactivation_hook(__FILE__, function () { // TODO: remove useless options
-  delete_option('nillkizz_core_activated');
-});
