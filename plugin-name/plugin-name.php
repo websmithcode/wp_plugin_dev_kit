@@ -10,8 +10,6 @@
 
 namespace PluginName;
 
-use \Nillkizz\PluginBase;
-
 if (!defined('ABSPATH')) {
   exit; // Exit if accessed directly
 }
@@ -26,7 +24,7 @@ if (!class_exists('PluginName')) :
   add_action('n_core_defined', '\PluginName\plugin_name');
   function plugin_name()
   {
-    class PluginName extends PluginBase
+    class PluginName extends \Nillkizz\PluginBase
     {
       public $includes = [
         // 'rest_api.php', // Uncomment, if rest needs
