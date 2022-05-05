@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginName;
+namespace WPNeonConstructor;
 
 class DepsChecker
 {
@@ -14,7 +14,7 @@ class DepsChecker
 
   function init(array $deps = [])
   {
-    $this->deps = array_merge(['Nillkizz Core'], $deps);
+    $this->deps = array_merge(['nillkizz-core'], $deps);
     $active_plugins = self::get_active_plugins();
 
     foreach ($this->deps as $dep) {
@@ -36,14 +36,14 @@ class DepsChecker
   {
     $plugin_name = plugin_basename($this->__FILE__);
     add_filter("plugin_action_links_$plugin_name", function ($links) {
-      array_unshift($links, sprintf($this->err_msg, $this->err_plugin));
+      array_unshift($links, sprintf($this->err_msg, self::unslug($this->err_plugin)));
       return $links;
     });
   }
 
   function stopActivation()
   {
-    die(sprintf($this->err_msg, 'Nillkizz Core'));
+    die(sprintf($this->err_msg, self::unslug($this->err_plugin)));
   }
 
 
@@ -57,6 +57,7 @@ class DepsChecker
   }
   static function get_plugin_name($path)
   {
-    return self::unslug(self::get_dir_name($path));
+    return self::get_dir_name($path);
   }
 }
+
