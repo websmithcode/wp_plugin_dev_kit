@@ -28,6 +28,9 @@ if (!class_exists('Core')) :
     public $css_styles = [
       ['name' => 'nillkizz-core-util', 'path' => 'public/css/util.css'],
     ];
+    public $js_scripts = [
+      ['name' => 'nillkizz-utils', 'path' => 'public/js/nillkizz_utils.js']
+    ];
     function __construct($__FILE__ = NULL)
     {
       add_filter('nillkizz_core-ConstPluginName', function () {

@@ -26,9 +26,7 @@ abstract class PluginBase
     'quasar@2.6.0' =>         ['name' => 'quasar-umd',          'url' => '//cdn.jsdelivr.net/npm/quasar@2.6.0/dist/quasar.umd.prod.js', 'in_footer' => true],
   ];
 
-  public $js_scripts = [
-    ['name' => 'nillkizz-utils', 'path' => 'public/js/nillkizz_utils.js']
-  ];
+  public $js_scripts = [];
   public $js_footer_scripts = [];
   public $css_styles = [];
   public $image_sizes = [];
