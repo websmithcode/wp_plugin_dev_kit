@@ -67,32 +67,38 @@ abstract class PluginBase
 
   function enqueue_style($style)
   {
-    if (is_string($style)) $style = $this->_css_styles[$style];
+    if (is_string($style) && isset($this->_css_styles[$style])) $style = $this->_css_styles[$style];
 
-    $gv = [$this, '_get_val'];
-    $handle = $style['name'];
-    $src = $gv($style, 'url') ?: $this->plugin_url . $gv($style, 'path');
-    $deps = $gv($style, 'deps', []);
-    $ver = $gv($style, 'ver', $this->plugin_version);
-    $media = $gv($style, 'media', 'all');
-    wp_enqueue_style($handle, $src, $deps, $ver, $media);
+    if (is_array($style)) {
+      $gv = [$this, '_get_val'];  // Get value from array by key or default value if key not exists function.
+      $handle = $gv($style, 'name');
+      $src = $gv($style, 'url') ?: $this->plugin_url . $gv($style, 'path');
+      $deps = $gv($style, 'deps', []);
+      $ver = $gv($style, 'ver', $this->plugin_version);
+      $media = $gv($style, 'media', 'all');
+      wp_enqueue_style($handle, $src, $deps, $ver, $media);
+    } else if (is_string($style)) wp_enqueue_style($style);
+    else wp_die('Invalid style argument in enqueue_style() method of class extended with Nillkizz\PluginBase class!');
   }
 
 
   function enqueue_script($script)
   {
-    if (is_string($script)) $script = $this->_js_scripts[$script];
+    if (is_string($script) && isset($this->_js_scripts[$script])) $script = $this->_js_scripts[$script];
 
-    $gv = [$this, '_get_val'];
-    $handle = $script['name'];
-    $src = $gv($script, 'url') ?: $this->plugin_url . $gv($script, 'path');
-    $deps = $gv($script, 'deps', []);
-    $ver = $gv($script, 'ver', $this->plugin_version);
-    $in_footer = $gv($script, 'in_footer');
-    wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
+    if (is_array($script)) {
+      $gv = [$this, '_get_val'];  // Get value from array by key or default value if key not exists function.
+      $handle = $gv($script, 'name');
+      $src = $gv($script, 'url') ?: $this->plugin_url . $gv($script, 'path');
+      $deps = $gv($script, 'deps', []);
+      $ver = $gv($script, 'ver', $this->plugin_version);
+      $in_footer = $gv($script, 'in_footer', false);
+      wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
+    } else if (is_string($script)) wp_enqueue_script($script);
+    else wp_die('Invalid script argument in enqueue_script() method of class extended with Nillkizz\PluginBase class!');
   }
 
-  function _get_val($array, $key, $default = '')
+  function _get_val($array, $key, $default = '') // Get value from array by key or default value if key not exists function.
   {
     return isset($array[$key]) ? $array[$key] : $default;
   }
