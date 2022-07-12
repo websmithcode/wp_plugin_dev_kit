@@ -1,6 +1,6 @@
 <?php
 
-namespace WPNeonConstructor;
+namespace PluginName;
 
 class DepsChecker
 {
@@ -60,4 +60,3 @@ class DepsChecker
     return self::get_dir_name($path);
   }
 }
-
