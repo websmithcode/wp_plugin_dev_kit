@@ -5,7 +5,7 @@
  * Description: Template of plagin from dev kit
  * Version: 0.0.0
  * Author: Alexander Smith
- * Author URI: https://t.me/alxndr_smith
+ * Author URI: https://t.me/alx_n_smith
  */
 
 namespace PluginName;
