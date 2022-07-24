@@ -41,6 +41,10 @@ if (!class_exists('PluginName')) :
       public $css_styles = [
         ['name' => 'plugin_name-style', 'path' => 'public/css/style.css']
       ];
+
+      public $templates = [
+        // 'templates/example.php' => 'Example', // Uncomment for test
+      ];
     }
 
 

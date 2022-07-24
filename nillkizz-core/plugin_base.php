@@ -13,6 +13,11 @@ abstract class PluginBase
     // Yout shortcode files path relative for "shortcodes/"... (without ".php" extension)
     // Like wp plugins - must be a directory with filename with same name, or just php file
   ];
+  public $templates = [
+    // Your templates relative path...
+    // Example:
+    // '/var/www/html/wp-content/plugins/nillkizz-core/includes/templates/landings-page.php' => 'Landings Page'
+  ];
   protected $_css_styles = [
     'quasar@2.6.0' => ['name' => 'quasar', 'url' => '//cdn.jsdelivr.net/npm/quasar@2.6.0/dist/quasar.prod.css'],
   ];
@@ -56,13 +61,30 @@ abstract class PluginBase
   function initialize()
   {
     $this->_add_image_sizes();
+
     $this->_enqueue_styles();
     add_action('wp_enqueue_scripts', [$this, '_enqueue_scripts']);
 
-    $this->_include();
+    $this->_includes();
 
     $shortcodes = new Shortcodes($this->__DIR__ . '/shortcodes/', $this->shortcodes);
     $shortcodes->init();
+
+    $this->init_templates();
+  }
+
+  function init_templates()
+  {
+    add_filter('templater_page_templates', [$this, '_add_templates']);
+  }
+
+  function _add_templates($templates)
+  {
+    foreach ($this->templates as $template => $name) {
+      $template_path = $this->plugin_path . $template;
+      $templates[$template_path] = $name;
+    }
+    return $templates;
   }
 
   function enqueue_style($style)
@@ -103,7 +125,7 @@ abstract class PluginBase
     return isset($array[$key]) ? $array[$key] : $default;
   }
 
-  protected function _include()
+  protected function _includes()
   {
     foreach ($this->includes as $include) {
       require_once $this->plugin_path . $include;
