@@ -117,17 +117,13 @@ class PageTemplater
   public function view_project_template($template)
   {
     // Return the search template if we're searching (instead of the template for the first result)
-    if (is_search()) {
-      return $template;
-    }
+    if (is_search()) return $template;
 
     // Get global post
     global $post;
 
     // Return template if post is empty
-    if (!$post) {
-      return $template;
-    }
+    if (!$post) return $template;
 
     // Return default template if we don't have a custom one defined
     if (!isset($this->templates[get_post_meta(
@@ -138,17 +134,14 @@ class PageTemplater
       return $template;
     }
 
-    $file =  get_post_meta(
+    $file = WP_CONTENT_DIR . get_post_meta(
       $post->ID,
       '_wp_page_template',
       true
     );
 
-    if (file_exists($file)) {
-      return $file;
-    } else {
-      echo $file;
-    }
+    if (file_exists($file)) return $file;
+    else echo $file;
 
     // Just to be safe, we check if the file exist first
     // Return template

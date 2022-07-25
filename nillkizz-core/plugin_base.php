@@ -70,20 +70,17 @@ abstract class PluginBase
     $shortcodes = new Shortcodes($this->__DIR__ . '/shortcodes/', $this->shortcodes);
     $shortcodes->init();
 
-    $this->init_templates();
-  }
-
-  function init_templates()
-  {
     add_filter('templater_page_templates', [$this, '_add_templates']);
   }
 
   function _add_templates($templates)
   {
+    $templates_path = explode('wp-content', $this->plugin_path)[1]; // Relative path for wp-content. Ex.: /plugins/nillkizz-core/templates/example.php
+
     foreach ($this->templates as $template => $name) {
-      $template_path = $this->plugin_path . $template;
-      $templates[$template_path] = $name;
+      $templates[$templates_path . $template] =  $name;
     }
+
     return $templates;
   }
 
