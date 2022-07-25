@@ -3,7 +3,7 @@
 /**
  * Plugin Name:  Nillkizz Core
  * Description: Nillkizz core plugin.
- * Version: 1.3.0
+ * Version: 1.4.0
  * Author: Alexander Smith
  * Author URI: https://t.me/alx_n_smith
  */
@@ -28,9 +28,6 @@ if (!class_exists('Core')) :
     ];
     public $css_styles = [
       ['name' => 'nillkizz-core-util', 'path' => 'public/css/util.css'],
-    ];
-    public $js_scripts = [
-      ['name' => 'nillkizz-utils', 'path' => 'public/js/nillkizz_utils.js']
     ];
     function __construct($__FILE__ = NULL)
     {

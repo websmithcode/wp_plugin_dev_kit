@@ -22,6 +22,12 @@ abstract class PluginBase
     'quasar@2.6.0' => ['name' => 'quasar', 'url' => '//cdn.jsdelivr.net/npm/quasar@2.6.0/dist/quasar.prod.css'],
   ];
   protected $_js_scripts = [
+    'nillkizz-colors' =>     ['name' => 'nillkizz-colors',     'url' => '/wp-content/plugins/nillkizz-core/public/js/nillkizz-colors.js'],
+    'nillkizz-cookies' =>     ['name' => 'nillkizz-cookies',    'url' => '/wp-content/plugins/nillkizz-core/public/js/nillkizz-cookies.js'],
+    'nillkizz-scroll' =>      ['name' => 'nillkizz-scroll',     'url' => '/wp-content/plugins/nillkizz-core/public/js/nillkizz-scroll.js'],
+    'nillkizz-styles' =>      ['name' => 'nillkizz-styles',     'url' => '/wp-content/plugins/nillkizz-core/public/js/nillkizz-styles.js'],
+    'nillkizz-utils' =>       ['name' => 'nillkizz-utils',      'url' => '/wp-content/plugins/nillkizz-core/public/js/nillkizz-utils.js'],
+
     'alpinejs' =>             ['name' => 'alpinejs',            'url' => '//unpkg.com/alpinejs@3.x.x/dist/cdn.min.js', 'in_footer' => true],
     'alpinejs/collapse' =>    ['name' => 'alpinejs/collapse',   'url' => '//unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js'],
     'alpinejs/focus' =>       ['name' => 'alpinejs/focus',      'url' => '//unpkg.com/@alpinejs/focus@3.9.1/dist/cdn.min.js'],
