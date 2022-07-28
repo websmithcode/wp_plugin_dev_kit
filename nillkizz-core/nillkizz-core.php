@@ -3,7 +3,7 @@
 /**
  * Plugin Name:  Nillkizz Core
  * Description: Nillkizz core plugin.
- * Version: 1.5.0
+ * Version: 1.6.0
  * Author: Alexander Smith
  * Author URI: https://t.me/alx_n_smith
  */
@@ -22,6 +22,7 @@ if (!class_exists('Core')) :
   class Core extends PluginBase
   {
     public $includes = [
+      'includes/render/index.php',
       'includes/shortcodes.php',
       'includes/utils.php',
       'includes/templater.php',
