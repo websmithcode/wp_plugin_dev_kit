@@ -28,7 +28,7 @@ class Shortcodes
     if (is_dir($dir)) $path =  $dir . '/' . $shortcode . '.php';
     else $path = $dir . '.php';
 
-    return (function () use ($path) {
+    return (function ($atts = [], $content = '', $tag = '') use ($path) {
       $public_path = 'shortcodes/' . basename(dirname($path)) . '/public/';
       ob_start();
       include $path;

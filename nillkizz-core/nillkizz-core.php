@@ -3,7 +3,7 @@
 /**
  * Plugin Name:  Nillkizz Core
  * Description: Nillkizz core plugin.
- * Version: 1.4.0
+ * Version: 1.5.0
  * Author: Alexander Smith
  * Author URI: https://t.me/alx_n_smith
  */
